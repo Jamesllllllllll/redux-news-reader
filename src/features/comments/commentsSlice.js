@@ -18,6 +18,21 @@ export const commentsSlice = createSlice({
   initialState: {
     // Add initial state properties here.
     byArticleId: {},
+
+    /* Desired structure looks like:  
+    
+    byArticleId: {
+      articleId1: [
+        {comment},
+        {comment},
+      ],
+      articleId2: [
+        {comment},
+      ] 
+    }
+
+    */
+
     isLoadingComments: false,
     failedToLoadComments: false,
   },

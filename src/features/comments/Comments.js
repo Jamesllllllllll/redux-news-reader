@@ -14,7 +14,7 @@ const Comments = () => {
   const article = useSelector(selectCurrentArticle);
   // Declare additional selected data here.
   const comments = useSelector(selectComments);
-  const commentsAreLoading = isLoadingComments;
+  const commentsAreLoading = useSelector(isLoadingComments);
 
   // Dispatch loadCommentsForArticleId with useEffect here.
 
