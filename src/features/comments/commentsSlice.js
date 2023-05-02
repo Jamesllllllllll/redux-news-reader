@@ -50,6 +50,8 @@ export const commentsSlice = createSlice({
 
     isLoadingComments: false,
     failedToLoadComments: false,
+    createCommentIsPending: false,
+    failedToCreateComment: false,
   },
   // Add extraReducers here.
   extraReducers: (builder) => {
@@ -66,6 +68,19 @@ export const commentsSlice = createSlice({
     .addCase(loadCommentsForArticleId.rejected, (state) => {
       state.isLoadingComments = false;
       state.failedToLoadComments = true;
+    })
+    .addCase(postCommentForArticleId.pending, (state) => {
+      state.createCommentIsPending = true;
+      state.failedToCreateComment = false;
+    })
+    .addCase(postCommentForArticleId.rejected, (state) => {
+      state.createCommentIsPending = false;
+      state.failedToCreateComment = true;
+    })
+    .addCase(postCommentForArticleId.fulfilled, (state, action) => {
+      state.createCommentIsPending = false;
+      state.failedToCreateComment = false;
+      state.byArticleId[action.payload.articleId].push(action.payload);
     })
   }
 });
