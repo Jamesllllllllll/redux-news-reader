@@ -3,9 +3,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const loadAllPreviews = createAsyncThunk(
   'articlePreviews/loadAllPreviews',
   async () => {
-    const data = await fetch('api/articles');
+    const data = await fetch('../../mocks/articles.json'); // api/articles
     const json = await data.json();
-    return json;
+    return data;
   }
 );
 
